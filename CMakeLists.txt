@@ -11,6 +11,11 @@ project(cen64 C)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules" ${CMAKE_MODULE_PATH})
 
+#64bit is needed
+if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+	message( FATAL_ERROR "cen64 can only be compiled on 64bit platforms" )
+endif()
+
 if(APPLE)
   find_package(OpenGLXQuartz REQUIRED)
   # Needed for signal.h on OS X.
